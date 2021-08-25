@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import PostList from './components/PostList';
 import './styles/App.css';
+import MyButton from './UI/button/MyButton';
+import MyInput from './UI/input/MyInput';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -10,8 +12,38 @@ function App() {
     { id: 3, title: 'JavaScript2', body: 'JavaScript - язык программирования' },
   ]);
 
+  const [post, setPost] = useState({
+    title: '',
+    body: '',
+  });
+
+  const addNewPost = e => {
+    e.preventDefault();
+
+    setPosts([...posts, { ...post, id: new Date() }]);
+    setPost({
+      title: '',
+      body: '',
+    });
+  };
+
   return (
     <div className="App">
+      <form>
+        <MyInput
+          onChange={e => setPost({ ...post, title: e.target.value })}
+          value={post.title}
+          type="text"
+          placeholder="Название поста"
+        />
+        <MyInput
+          value={post.body}
+          onChange={e => setPost({ ...post, body: e.target.value })}
+          type="text"
+          placeholder="Описание поста"
+        />
+        <MyButton onClick={addNewPost}>Добавить Пост</MyButton>
+      </form>
       <PostList posts={posts} title="Посты про JS" />
     </div>
   );
