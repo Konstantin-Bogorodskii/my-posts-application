@@ -1,34 +1,24 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import PostFilter from './components/PostFilter';
 import PostForm from './components/PostForm';
 
 import PostList from './components/PostList';
+import { usePosts } from './hooks/usePosts';
 import './styles/App.css';
+import MyButton from './UI/button/MyButton';
+import MyModal from './UI/MyModal/MyModal';
 
 function App() {
-  const [posts, setPosts] = useState([
-    { id: 1, title: 'ффф', body: '1213213123JavaScript - язык программирования' },
-    { id: 2, title: 'gggg', body: 'aaaaJavaScript - язык программирования' },
-    { id: 3, title: 'ббб', body: 'JavaScript -  программирования' },
-  ]);
+  const [posts, setPosts] = useState([]);
 
   const [filter, setFilter] = useState({ sort: '', query: '' });
-  const sortedPosts = useMemo(() => {
-    console.log('вызвано');
+  const [visible, setVisible] = useState(false);
 
-    if (filter.sort) {
-      return [...posts].sort((a, b) => a[filter.sort].localeCompare(b[filter.sort]));
-    } else {
-      return posts;
-    }
-  }, [posts, filter.sort]);
-
-  const soretedAndSearchedPosts = useMemo(() => {
-    return sortedPosts.filter(post => post.title.toLowerCase().includes(filter.query));
-  }, [filter.query, sortedPosts]);
+  const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
 
   function createPost(newPost) {
     setPosts([...posts, newPost]);
+    setVisible(false);
   }
 
   function deletePost(post) {
@@ -37,11 +27,17 @@ function App() {
 
   return (
     <div className="App">
-      <PostForm createPost={createPost} />
+      <MyButton style={{ marginTop: '20px' }} onClick={() => setVisible(true)}>
+        Создать пост
+      </MyButton>
+      <MyModal visible={visible} setVisible={setVisible}>
+        <PostForm createPost={createPost} />
+      </MyModal>
+
       <hr style={{ margin: '15px 0' }} />
       <PostFilter filter={filter} setFilter={setFilter} />
 
-      <PostList posts={soretedAndSearchedPosts} title="Посты про JS" deletePost={deletePost} />
+      <PostList posts={sortedAndSearchedPosts} title="Посты про JS" deletePost={deletePost} />
     </div>
   );
 }
