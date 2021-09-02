@@ -1,6 +1,6 @@
 import React from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Post from './Post';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 function PostList({ posts, title, deletePost }) {
   if (!posts.length) {
