@@ -6,7 +6,8 @@
 
 #root {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App {
@@ -38,4 +39,51 @@
   opacity: 0;
   transform: scale(0.9);
   transition: opacity 300ms, transform 300ms;
+}
+
+.page__wrapper {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.page {
+  padding: 10px;
+  border: 1px solid teal;
+  cursor: pointer;
+}
+
+.page--active {
+  border: 1px solid lightcoral;
+  font-weight: bold;
+  color: lightcoral;
+}
+
+.navbar {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  background-color: lightblue;
+}
+
+.navbar__links {
+  margin: 0 auto;
+}
+
+.navbar__links a {
+  font-size: 20px;
+  font-weight: 500;
+  color: whitesmoke;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px;
+  background-color: rgb(13, 224, 31);
+  margin-right: 10px;
+}
+
+.post__btns {
+  display: flex;
+  align-items: center;
 }

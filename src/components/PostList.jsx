@@ -13,7 +13,7 @@ function PostList({ posts, title, deletePost }) {
       <TransitionGroup>
         {posts.map((post, index) => {
           return (
-            <CSSTransition key={index} timeout={500} classNames="post">
+            <CSSTransition key={post.id} timeout={{ enter: 500, exit: 500 }} classNames="post">
               <Post deletePost={deletePost} post={post} number={index + 1} />
             </CSSTransition>
           );
