@@ -1,0 +1,15 @@
+.title {
+  margin: 20px 0;
+  color: lightgreen;
+}
+
+.post {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: gray;
+  font-weight: 600;
+}
+
+.comms {
+  margin: 10px 0;
+}
