@@ -13,3 +13,9 @@
 .comms {
   margin: 10px 0;
 }
+
+.wrap {
+  max-width: 800px;
+  width: 100%;
+  padding: 0 10px;
+}

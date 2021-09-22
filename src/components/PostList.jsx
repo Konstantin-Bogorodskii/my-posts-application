@@ -9,7 +9,7 @@ function PostList({ posts, title, deletePost }) {
 
   return (
     <div>
-      <h1 style={{ textAlign: 'center', color: 'lightblue' }}>{title}</h1>
+      <h1 style={{ textAlign: 'center', color: 'lightblue', margin: '15px 0' }}>{title}</h1>
       <TransitionGroup>
         {posts.map((post, index) => {
           return (

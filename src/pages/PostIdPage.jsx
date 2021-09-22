@@ -26,7 +26,7 @@ const PostIdPage = () => {
   }, [params.id]);
 
   return (
-    <div>
+    <div className={classes.wrap}>
       <h1 className={classes.title}>Вы открыли страницу поста №{params.id}</h1>
       <div>
         {Object.keys(post).length > 0 ? (
@@ -40,16 +40,16 @@ const PostIdPage = () => {
         <h2 className={classes.comms}>Коментарии:</h2>
         <div>
           {comments.length > 0 ? (
-            <div>
+            <ul style={{ marginLeft: '20px' }}>
               {comments.map(comment => {
                 return (
-                  <ul key={comment.id} style={{ marginTop: '15px' }}>
+                  <li key={comment.id} style={{ marginTop: '15px' }}>
                     <h5>{comment.email}</h5>
-                    <li>{comment.body}</li>
-                  </ul>
+                    <div>{comment.body}</div>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
           ) : (
             <Loader />
           )}

@@ -11,14 +11,16 @@
 }
 
 .App {
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
+  padding: 0 10px;
 }
 
 .post {
   display: flex;
   padding: 15px;
   border: 2px solid teal;
-  margin-top: 15px;
+  margin: 10px;
   justify-content: space-between;
   align-items: center;
 }
@@ -64,6 +66,7 @@
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   padding: 0 15px;
   background-color: lightblue;
 }
@@ -86,4 +89,19 @@
 .post__btns {
   display: flex;
   align-items: center;
+}
+
+.post__content {
+  margin-right: 7px;
+}
+
+@media (max-width: 768px) {
+  .post {
+    flex-direction: column;
+  }
+
+  .post__content {
+    margin: 0;
+    margin-bottom: 10px;
+  }
 }
